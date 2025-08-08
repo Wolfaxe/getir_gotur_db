@@ -1,68 +1,74 @@
-# 📍 Getir CBS Uzamsal Veritabanı Projesi
+📍 Getir GIS Spatial Database Project
+This project utilizes PostgreSQL + PostGIS infrastructure and Python libraries to perform location-based analysis, proximity queries, and map visualization using OpenStreetMap data.
 
-Bu proje, **PostgreSQL + PostGIS** altyapısı ve **Python** kütüphaneleri kullanılarak OpenStreetMap verileri üzerinden **konum tabanlı analiz**, **yakınlık sorguları** ve **harita görselleştirme** işlemlerini gerçekleştirmektedir.  
+🚀 Project Features
+Import OpenStreetMap (.osm) data into a PostgreSQL/PostGIS database
 
-## 🚀 Proje Özellikleri
+Convert address input into coordinate data (GeoPy – Nominatim)
 
-- OpenStreetMap (.osm) verilerini PostgreSQL/PostGIS veritabanına aktarma
-- Adres girdisini koordinat verisine dönüştürme (**GeoPy – Nominatim**)
-- Yakınlık (buffer) analizi ile 1000 metre çevresindeki binaları, yolları veya marketleri listeleme
-- SQL sorgularının Python üzerinden çalıştırılması ve **GeoPandas + Matplotlib** ile görselleştirme
-- Kuryeler için rota planlama ve yakın POI (Point of Interest) tespiti
+Perform buffer analysis to list buildings, roads, or markets within a 1000-meter radius
 
----
+Execute SQL queries in Python and visualize results with GeoPandas + Matplotlib
 
-## 🛠 Kullanılan Teknolojiler
+Plan delivery routes and detect nearby Points of Interest (POI) for couriers
 
-- **Veritabanı:** PostgreSQL + PostGIS
-- **Python Kütüphaneleri:**  
-  - GeoPandas  
-  - SQLAlchemy  
-  - Matplotlib  
-  - GeoPy (Nominatim)  
-  - Shapely  
+🛠 Technologies Used
+Database: PostgreSQL + PostGIS
+Python Libraries:
 
----
+GeoPandas
 
-## 📂 Veri Kaynağı
+SQLAlchemy
 
-- **OpenStreetMap** (.osm XML formatı)  
-- **osm2pgsql** ile veritabanına aktarım
+Matplotlib
 
----
+GeoPy (Nominatim)
 
-## 🔍 Örnek Sorgular
+Shapely
 
-- İstanbul’daki ev ve apartmanları listeleme
-- Market ve dağıtım yerlerini listeleme
-- Kuryenin konumuna yakın yolları çıkarma
-- Kullanıcının adresinden 1000m çevredeki binaları gösterme
-- Adrese en yakın 25 marketi sıralama
+📂 Data Source
+OpenStreetMap (.osm XML format)
 
----
+Imported into the database using osm2pgsql
 
-## 📊 Görselleştirme
+🔍 Example Queries
+List houses and apartments in Istanbul
 
-Python tarafında yapılan görselleştirme örnekleri:
+List markets and distribution locations
 
-- Kullanıcının konumu **kırmızı nokta**
-- Binalar, marketler veya yollar **yeşil**
-- 1000m analiz alanı **mavi çember**
-- Katman isimleri legend üzerinde görüntülenir
+Retrieve roads near the courier’s location
 
----
+Show buildings within 1000 meters of the user’s address
 
-## 📦 Kurulum
+Find the 25 closest markets to a given address
 
-1. PostgreSQL ve PostGIS kurun
-2. OSM verisini indirin  (https://download.geofabrik.de/europe/turkey-latest.osm.pbf)
-3. osm2pgsql ile veriyi içe aktarın  
-4. Python bağımlılıklarını yükleyin  (pip install geopandas sqlalchemy matplotlib geopy shapely psycopg2)
-5. `config` kısmında veritabanı bağlantı bilgilerinizi düzenleyin
-6. Python betiğini çalıştırın  
+📊 Visualization
+Python-generated visualizations include:
 
----
+User location marked with a red dot
 
-## 📌 Sonuç
+Buildings, markets, and roads shown in green
 
-Bu proje, **uzamsal veritabanı yönetimi** ve **Python tabanlı coğrafi veri analizi** alanlarında hem temel hem de ileri düzey teknikleri bir araya getirmiştir. Geliştirilecek mobil veya web tabanlı CBS projeleri için sağlam bir altyapı sunmaktadır.
+1000m analysis area highlighted with a blue circle
+
+Layer names displayed in the legend
+
+📦 Installation
+Install PostgreSQL and PostGIS
+
+Download OSM data:
+https://download.geofabrik.de/europe/turkey-latest.osm.pbf
+
+Import data using osm2pgsql:
+osm2pgsql -d getir_db -U postgres -H localhost turkey-latest.osm.pbf
+
+Install Python dependencies:
+pip install geopandas sqlalchemy matplotlib geopy shapely psycopg2
+Update the database connection settings in your config
+
+Run the Python script:
+python main.py
+
+
+📌 Conclusion
+This project combines both fundamental and advanced techniques in spatial database management and Python-based geospatial analysis. It provides a solid foundation for developing mobile or web-based GIS applications in the future.
